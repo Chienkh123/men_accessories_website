@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 23, 2024 lúc 02:17 PM
+-- Thời gian đã tạo: Th10 24, 2024 lúc 06:34 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -33,17 +33,6 @@ CREATE TABLE `tb_bill` (
   `status_bill` char(2) NOT NULL,
   `id_order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `tb_bill`
---
-
-INSERT INTO `tb_bill` (`id_bill`, `code_bill`, `status_bill`, `id_order`) VALUES
-(36, '8560090', '1', 139),
-(37, '2405746', '1', 142),
-(38, '5290618', '1', 143),
-(39, '6944929', '1', 148),
-(40, '6944929', '1', 149);
 
 -- --------------------------------------------------------
 
@@ -168,8 +157,7 @@ CREATE TABLE `tb_customer` (
 --
 
 INSERT INTO `tb_customer` (`id_customer`, `name_customer`, `phonenumber_customer`, `email_customer`, `address_customer`, `type_customer`, `id_user`) VALUES
-(1, 'Nông Văn Chiến', 867476810, 'chienkh6b.vn@gmail.com', 'Tuyen Quang', 1, 13),
-(2, 'Nguyễn An', 867476810, 'nongvanchien203@hotmail.com', 'Khuôn Hà', 1, 14);
+(11, 'Nông Văn Chiến', 86747, 'chienkh6b.vn@gmail.com', 'Tuyen Quang', 1, 42);
 
 -- --------------------------------------------------------
 
@@ -251,10 +239,10 @@ CREATE TABLE `tb_information` (
 INSERT INTO `tb_information` (`id`, `name`, `value`) VALUES
 (1, 'name', 'HOME-SHOP'),
 (2, 'description', 'Thương hiệu thời trang nam HOMESHOP Chuyên các dòng sản phẩm thời trang nam: Quần jean, quần tây, quần kaki, áo sơ mi, áo khoác, áo vest, áo thun, phụ kiện nam,...'),
-(3, 'logo_header', 'image/anhslider4_thump.jpg'),
-(4, 'logo_footer', 'image/anhslider4_thump.jpg'),
-(5, 'email', ''),
-(6, 'phone', ''),
+(3, 'logo_header', 'image/SHOP(1).png'),
+(4, 'logo_footer', 'image/SHOP(1).png'),
+(5, 'email', ' chienkh6b.vn@gmail.com'),
+(6, 'phone', ' 0867476810'),
 (7, 'adress', '$%^$%^Khuôn Hà, Lâm Bình, Tuyên Quang'),
 (15, 'slider', 'image/g144.jpg image/g137.jpg image/g142.jpg image/g143.jpg image/g116.jpg'),
 (16, 'fb', ''),
@@ -318,17 +306,6 @@ CREATE TABLE `tb_order` (
   `id_customer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `tb_order`
---
-
-INSERT INTO `tb_order` (`id_order`, `code_order`, `status_order`, `id_product`, `size_product`, `quantity_product`, `name_customer`, `phone_customer`, `address_customer`, `email_customer`, `order_day`, `id_district`, `id_customer`) VALUES
-(139, '5722466', '1', 23, '27', 1, 'Nguyễn An', '867476810', 'ada, ada', 'nongvanchien203@hotmail.com', '2024-11-23 16:35:42', 5, 2),
-(142, '8355549', '1', 23, '29', 1, 'Nguyễn An', '867476810', 'đâ, dá', 'nongvanchien203@hotmail.com', '2024-11-23 17:25:09', 5, 2),
-(143, '6914620', '1', 19, 'S', 1, 'Nguyễn An', '867476810', 'dfsdf, dfsa', 'nongvanchien203@hotmail.com', '2024-11-23 17:33:16', 6, 2),
-(148, '666522', '1', 50, 'm', 10, 'Nguyễn An', '867476810', ' Khuôn Hà', 'nongvanchien203@hotmail.com', '2024-11-23 18:56:00', 5, 2),
-(149, '666522', '1', 106, 's', 4, 'Nguyễn An', '867476810', ' Khuôn Hà', 'nongvanchien203@hotmail.com', '2024-11-23 18:56:00', 5, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -357,12 +334,12 @@ CREATE TABLE `tb_product` (
 --
 
 INSERT INTO `tb_product` (`id_product`, `code_product`, `name_product`, `id_category`, `id_label`, `image`, `image_thump`, `price_product`, `saleprice_product`, `describe_product`, `size_product`, `view_product`, `date_product`, `status_product`) VALUES
-(19, 'A8024', 'ÁO SƠ MI HÀN QUỐC CAM TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Cam Trơn với thiết kế cổ trụ, tay dài, form ôm nhẹ, phối nút ở cổ áo tinh tế. Thiết kế đơn giản theo phong cách Hàn Quốc rất thời trang, vải trơn thanh lịch, chất liệu 100% cotton cao cấp thấm hút tốt, pha sợi spandex giúp co giãn và không co rút, nhăn nhàu khi sử dụng. Đường chỉ may tỉ mỉ, tinh tế đến từng chi tiết nhỏ. Màu sắc nổi bật, kiểu dáng hiện đại, giúp bạn tự tin và lịch lãm hơn.', 'a:6:{s:1:\"s\";i:7;s:1:\"m\";i:9;s:1:\"l\";i:6;s:2:\"xl\";s:2:\"10\";i:28;i:-1;i:27;i:-1;}', 67, '2018-01-10', '1'),
-(20, 'A551', 'ÁO SƠ MI HÀN QUỐC TRẮNG KEM TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-4_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-4_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Trắng Kem Trơn màu sắc trang nhã, thiết kế hiện đại không gây cảm giác nhàm chán. Form ôm, vải suông, tay dài, cổ trụ phối nút tạo điểm nhấn tinh tế cho sản phẩm. Chất liệu cao cấp từ 100% cotton thấm hút tốt, pha sợi spandex giúp sản phẩm có độ co giãn, không nhăn nhàu co rút sau khi giặt. Thiết kế theo phong cách Hàn Quốc rất thời trang và hiện đại, giúp bạn thêm chuyên nghiệp, lịch lãm và nam tính hơn.', 'a:4:{s:1:\"s\";i:9;s:1:\"m\";s:2:\"10\";s:1:\"l\";i:0;s:2:\"xl\";s:2:\"10\";}', 16, '2018-01-10', '1'),
+(19, 'A8024', 'ÁO SƠ MI HÀN QUỐC CAM TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Cam Trơn với thiết kế cổ trụ, tay dài, form ôm nhẹ, phối nút ở cổ áo tinh tế. Thiết kế đơn giản theo phong cách Hàn Quốc rất thời trang, vải trơn thanh lịch, chất liệu 100% cotton cao cấp thấm hút tốt, pha sợi spandex giúp co giãn và không co rút, nhăn nhàu khi sử dụng. Đường chỉ may tỉ mỉ, tinh tế đến từng chi tiết nhỏ. Màu sắc nổi bật, kiểu dáng hiện đại, giúp bạn tự tin và lịch lãm hơn.', 'a:6:{s:1:\"s\";i:7;s:1:\"m\";i:9;s:1:\"l\";i:6;s:2:\"xl\";s:2:\"10\";i:28;i:-1;i:27;i:-1;}', 69, '2018-01-10', '1'),
+(20, 'A551', 'ÁO SƠ MI HÀN QUỐC TRẮNG KEM TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-4_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-4_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Trắng Kem Trơn màu sắc trang nhã, thiết kế hiện đại không gây cảm giác nhàm chán. Form ôm, vải suông, tay dài, cổ trụ phối nút tạo điểm nhấn tinh tế cho sản phẩm. Chất liệu cao cấp từ 100% cotton thấm hút tốt, pha sợi spandex giúp sản phẩm có độ co giãn, không nhăn nhàu co rút sau khi giặt. Thiết kế theo phong cách Hàn Quốc rất thời trang và hiện đại, giúp bạn thêm chuyên nghiệp, lịch lãm và nam tính hơn.', 'a:4:{s:1:\"s\";i:9;s:1:\"m\";s:2:\"10\";s:1:\"l\";i:0;s:2:\"xl\";s:2:\"10\";}', 17, '2018-01-10', '1'),
 (21, 'A3516', 'ÁO SƠ MI HÀN QUỐC XANH ĐEN TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-3_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-3_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Xanh Đen Trơn  với thiết kế cổ trụ, tay dài, form ôm nhẹ, phối nút ở cổ áo tinh tế. Thiết kế đơn giản theo phong cách Hàn Quốc rất thời trang, vải trơn thanh lịch, chất liệu 100% cotton cao cấp thấm hút tốt. Đường chỉ may tỉ mỉ, tinh tế đến từng chi tiết nhỏ. Màu sắc nổi bật, kiểu dáng hiện đại, giúp bạn tự tin và lịch lãm hơn.', 'a:4:{s:1:\"s\";s:2:\"10\";s:1:\"m\";i:4;s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";}', 3, '2018-01-10', '1'),
-(23, 'A441', 'ÁO SƠ MI TRẮNG KEM', 106, 22, 'upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-4_thump.jpg', 'upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-4_thump.jpg ', 200000, 245000, 'Màu trắng kem luôn mang đến cho người mặc sự thanh lịch, nhã nhặn như chiếc Áo Sơ Mi Trắng Kem này. Áo co giãn rất thoải mái và thấm hút mồ hôi cực tốt nhờ chất liệu từ cotton cao cấp. Điểm nhấn của chiếc áo nằm ở những đường lượn cong nhiều màu trải đều khắp mặt áo rất ấn tượng. Đảm bảo sẽ làm bật lên style ăn mặc hiện đại của bạn.', 'a:5:{s:1:\"m\";s:2:\"10\";s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";i:27;i:-2;i:29;i:-1;}', 13, '2018-01-11', '1'),
+(23, 'A441', 'ÁO SƠ MI TRẮNG KEM', 106, 22, 'upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-4_thump.jpg', 'upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-4_thump.jpg ', 200000, 245000, 'Màu trắng kem luôn mang đến cho người mặc sự thanh lịch, nhã nhặn như chiếc Áo Sơ Mi Trắng Kem này. Áo co giãn rất thoải mái và thấm hút mồ hôi cực tốt nhờ chất liệu từ cotton cao cấp. Điểm nhấn của chiếc áo nằm ở những đường lượn cong nhiều màu trải đều khắp mặt áo rất ấn tượng. Đảm bảo sẽ làm bật lên style ăn mặc hiện đại của bạn.', 'a:5:{s:1:\"m\";i:9;s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";i:27;i:-2;i:29;i:-1;}', 15, '2018-01-11', '1'),
 (28, 'A792', 'ÁO SƠ MI TRẮNG KEM', 107, 22, 'upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-4_thump.jpg', 'upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm838-8198-slide-4_thump.jpg ', 200000, 245000, 'Áo Sơ Mi Trắng Kem thanh lịch với màu trắng kem nhã nhặn, chất liệu cao cấp từ cotton co giãn, thấm hút tốt, giúp sản phẩm không những bền đẹp mà còn có giá trị sử dụng rất cao. Chiếc áo được nhấn nhá với những họa tiết nhỏ, trải đều khắp mặt áo rất ấn tượng. Đảm bảo sẽ làm bật lên style ăn mặc hiện đại của bạn.', 'a:2:{s:1:\"l\";i:0;s:2:\"xl\";s:2:\"10\";}', 6, '2018-01-11', '1'),
-(30, 'A3007', 'ÁO SƠ MI HỌA TIẾT ĐỎ ĐÔ', 107, 22, 'upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-1_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-2_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-3_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-4_thump.jpg', 'upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-1_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-2_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-3_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-4_thump.jpg ', 200000, 225000, 'Áo Sơ Mi Họa Tiết Đỏ Đô kiểu dáng trẻ trung, phối họa tiết lạ mắt tạo điểm nhấn cho sản phẩm. Màu đỏ đô nổi bật, tay dài, cổ bẻ cao thời trang. Tên và logo thương hiệu gắn bên ngực phải mang đến sự khác biệt cho sản phẩm. Chất liệu vải cotton cao cấp bền đẹp, không nhăn, thấm hút mồ hôi tốt tạo sự thoải mái khi mặc.\r\n\r\n', 'a:2:{s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";}', 2, '2018-01-11', '1'),
+(30, 'A3007', 'ÁO SƠ MI HỌA TIẾT ĐỎ ĐÔ', 107, 22, 'upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-1_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-2_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-3_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-4_thump.jpg', 'upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-1_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-2_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-3_thump.jpg upload/resize/ao-so-mi-hoa-tiet-do-do-asm706-5720-slide-4_thump.jpg ', 200000, 225000, 'Áo Sơ Mi Họa Tiết Đỏ Đô kiểu dáng trẻ trung, phối họa tiết lạ mắt tạo điểm nhấn cho sản phẩm. Màu đỏ đô nổi bật, tay dài, cổ bẻ cao thời trang. Tên và logo thương hiệu gắn bên ngực phải mang đến sự khác biệt cho sản phẩm. Chất liệu vải cotton cao cấp bền đẹp, không nhăn, thấm hút mồ hôi tốt tạo sự thoải mái khi mặc.\r\n\r\n', 'a:2:{s:1:\"l\";i:9;s:2:\"xl\";s:2:\"10\";}', 5, '2018-01-11', '1'),
 (32, 'A5771', 'ÁO SƠ MI CA RÔ XANH ĐEN', 108, 22, 'upload/resize/ao-so-mi-ca-ro-xanh-den-asm832-7937-slide-1_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm832-7937-slide-3_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm832-7937-slide-4_thump.jpg', 'upload/resize/ao-so-mi-ca-ro-xanh-den-asm832-7937-slide-1_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm832-7937-slide-3_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm832-7937-slide-4_thump.jpg ', 200000, 245000, 'Áo Sơ Mi Ca Rô Xanh Đen màu sắc tươi sáng, nổi bật với những đường sọc caro xanh đen cá tính cho người mặc nét sang trọng, lịch lãm. Kiểu dáng thanh lịch, hợp thời trang, phù hợp với nhiều đối tượng. Hãy bắt đầu ngày mới với những sắc màu trẻ trung, tươi sáng từ Áo sơ mi của 4MEN.\r\n\r\n', 'a:2:{s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";}', 0, '2018-01-11', '1'),
 (33, 'A5042', 'ÁO SƠ MI CA RÔ XANH ĐEN', 108, 22, 'upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-1_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-2_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-3_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-4_thump.jpg', 'upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-1_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-2_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-3_thump.jpg upload/resize/ao-so-mi-ca-ro-xanh-den-asm886-8768-slide-4_thump.jpg ', 150000, 195000, '', 'a:3:{s:1:\"m\";s:2:\"10\";s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";}', 0, '2018-01-11', '1'),
 (35, 'A6757', 'ÁO SƠ MI SỌC XANH RÊU ASM840', 108, 22, 'upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-1_thump.jpg upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-2_thump.jpg upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-3_thump.jpg upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-4_thump.jpg', 'upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-1_thump.jpg upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-2_thump.jpg upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-3_thump.jpg upload/resize/ao-so-mi-soc-xanh-reu-asm840-8259-slide-4_thump.jpg ', 200000, 245000, 'Áo Sơ Mi Sọc Xanh Rêu với những đường sọc màu bắt mắt đã phá tan sự giản đơn của một chiếc áo sơ mi trắng. Kiểu dáng thanh lịch, hợp thời trang, phù hợp với nhiều đối tượng. Sọc màu xanh rêu cá tính ở ngực phải tạo nên điểm nhấn cho sản phẩm cũng như sự thu hút cho người mặc.', 'a:2:{s:1:\"m\";s:2:\"10\";s:1:\"l\";s:2:\"10\";}', 0, '2018-01-11', '1'),
@@ -380,7 +357,7 @@ INSERT INTO `tb_product` (`id_product`, `code_product`, `name_product`, `id_cate
 (50, 'A9312', 'ÁO THUN CÁ SẤU XANH LÁ CÂY', 110, 22, 'upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-4_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-5_thump.jpg', 'upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-4_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at632-7961-slide-5_thump.jpg ', 150000, 195000, '', 'a:3:{s:1:\"m\";s:2:\"10\";s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";}', 1, '2018-01-12', '1'),
 (51, 'A4261', 'ÁO THUN CÁ SẤU CỔ LÃNH TỤ ĐEN', 110, 22, 'upload/resize/ao-thun-ca-sau-den-at574-6225-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-den-at574-6225-slide-2_thump.jpg', 'upload/resize/ao-thun-ca-sau-den-at574-6225-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-den-at574-6225-slide-2_thump.jpg ', 150000, 195000, 'Áo Thun Cá Sấu Cổ Lãnh Tụ Đen AT574 màu đen cá tính phối đỏ đô bên tay áo tạo điểm nhấn cho sản phẩm. Thiết kế tay ngắn, cổ lãnh tụ kèm nút, phối hàng chữ dọc chạy theo nút thời trang. Chất liệu thun cotton mềm mại, co giãn tạo sự thoáng mát khi mặc. Logo và chữ CITIZEN sử dụng công nghệ in cao được in nổi bật bên ngực áo. Form áo ôm body.\r\n\r\n', 'a:3:{s:1:\"m\";s:2:\"10\";s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";}', 0, '2018-01-12', '1'),
 (52, 'A8432', 'ÁO THUN CÁ SẤU CỔ LÃNH TỤ XANH LÁ CÂY', 110, 22, 'upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-4_thump.jpg', 'upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at574-6229-slide-4_thump.jpg', 150000, 195000, 'Áo Thun Cá Sấu Cổ Lãnh Tụ Xanh Lá Cây màu xanh lá cây tươi sáng phối màu trắng kem ở tay áo tạo điểm nhấn nổi bật cho sản phẩm. Thiết kế tay ngắn, cổ lãnh tụ kèm nút, phối hàng chữ dọc chạy theo nút thời trang. Chất liệu thun cotton mềm mại, co giãn tạo sự thoáng mát khi mặc. Logo và chữ CITIZEN sử dụng công nghệ in cao được in nổi bật bên ngực áo. Form áo ôm body giúp chàng ôm dáng và khoe hình thể chuẩn. Sản phẩm mới, mang đến phong cách năng động, khỏe khoắn cho người mặc.', 'a:4:{s:1:\"s\";s:1:\"0\";s:1:\"m\";s:1:\"0\";s:1:\"l\";s:1:\"0\";s:2:\"xl\";s:1:\"0\";}', 0, '2018-01-12', '0'),
-(53, 'A267', 'ÁO THUN CÁ SẤU CỔ LÃNH TỤ VÀNG ', 110, 22, 'upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-4_thump.jpg', 'upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-4_thump.jpg', 150000, 195000, 'Áo Thun Cá Sấu Cổ Lãnh Tụ Vàng màu vàng phối trắng ở tay áo tạo điểm nhấn nổi bật. Thiết kế tay ngắn, cổ lãnh tụ kèm nút, phối hàng chữ dọc chạy theo nút thời trang. Chất liệu thun cotton mềm mại, co giãn tạo sự thoáng mát khi mặc. Logo và chữ CITIZEN sử dụng công nghệ in cao được in nổi bật bên ngực áo. Form áo ôm body giúp chàng ôm dáng và khoe hình thể chuẩn, áo có nhiều size giúp bạn dễ đàng lựa chọn sản phẩm phù hợp.\r\n\r\n', 'a:3:{s:1:\"m\";s:1:\"2\";s:1:\"l\";s:1:\"1\";s:2:\"xl\";s:1:\"1\";}', 0, '2018-01-12', '1'),
+(53, 'A267', 'ÁO THUN CÁ SẤU CỔ LÃNH TỤ VÀNG ', 110, 22, 'upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-4_thump.jpg', 'upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-vang-at574-6228-slide-4_thump.jpg', 150000, 195000, 'Áo Thun Cá Sấu Cổ Lãnh Tụ Vàng màu vàng phối trắng ở tay áo tạo điểm nhấn nổi bật. Thiết kế tay ngắn, cổ lãnh tụ kèm nút, phối hàng chữ dọc chạy theo nút thời trang. Chất liệu thun cotton mềm mại, co giãn tạo sự thoáng mát khi mặc. Logo và chữ CITIZEN sử dụng công nghệ in cao được in nổi bật bên ngực áo. Form áo ôm body giúp chàng ôm dáng và khoe hình thể chuẩn, áo có nhiều size giúp bạn dễ đàng lựa chọn sản phẩm phù hợp.\r\n\r\n', 'a:3:{s:1:\"m\";s:1:\"2\";s:1:\"l\";s:1:\"1\";s:2:\"xl\";s:1:\"1\";}', 1, '2018-01-12', '1'),
 (54, 'A8182', 'ÁO THUN CÁ SẤU XÁM MUỐI TIÊU', 110, 22, 'upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-4_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-5_thump.jpg', 'upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-4_thump.jpg upload/resize/ao-thun-ca-sau-xam-muoi-tieu-at587-6518-slide-5_thump.jpg', 150000, 195000, 'Áo Thun Cá Sấu Xám Muối Tiêu thiết kế tay ngắn, cổ bẻ tạo sự khỏe khoắn năng động. Màu xám muối tiêu phối xanh trên vai áo cùng các đường sọc ngang trên thân áo. Họa tiết xe đạp được in cao bên ngực phải áo Chất liệu thun cá sấu mềm mại, co giãn tốt, mặc thoáng mát. Form ôm body giúp tôn dáng và body chuẩn hoàn hảo.', 'a:5:{s:1:\"s\";s:2:\"10\";s:1:\"m\";s:2:\"10\";s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";s:3:\"xxl\";s:2:\"10\";}', 0, '2018-01-12', '1'),
 (55, 'A7230', 'ÁO THUN CÁ SẤU XANH LÁ CÂY ', 110, 22, 'upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-4_thump.jpg', 'upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-1_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-2_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-3_thump.jpg upload/resize/ao-thun-ca-sau-xanh-la-cay-at580-6344-slide-4_thump.jpg', 150000, 195000, 'Áo Thun Cá Sấu Xanh Lá Cây màu xanh lá cây tươi sáng phối viền trắng ở cổ áo. Thiết kế tay ngắn, cổ lãnh tụ kèm nút gài cá tính, năng động. Chất liệu thun cá sấu mềm mại, co giãn tạo sự thoáng mát khi mặc. Logo sử dụng công nghệ in cao được in nổi bật bên ngực áo. Form áo ôm body giúp chàng ôm dáng và khoe hình thể chuẩn cho nam giới', 'a:3:{s:1:\"m\";s:1:\"1\";s:1:\"l\";s:1:\"1\";s:2:\"xl\";s:1:\"1\";}', 0, '2018-01-12', '1'),
 (56, 'A6533', 'ÁO THUN CỔ TRÒN ĐỎ ĐÔ PRADA', 111, 22, 'upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-1_thump.jpg upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-2_thump.jpg upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-3_thump.jpg upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-4_thump.jpg', 'upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-1_thump.jpg upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-2_thump.jpg upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-3_thump.jpg upload/resize/ao-thun-co-tron-do-do-prada-at540-4896-slide-4_thump.jpg', 120000, 165000, 'Áo Thun Cổ Tròn Đỏ Đô AT540 chất liệu thun thoáng mát. Thiết kế form áo body ôm vừa, cổ tròn, tay ngắn, phối chữ và họa tiết lạ, tạo sự trẻ trung, năng động cho người mặc.\r\n\r\n', 'a:3:{s:1:\"m\";s:1:\"1\";s:1:\"l\";s:1:\"1\";s:2:\"xl\";s:1:\"1\";}', 1, '2018-01-12', '1'),
@@ -407,17 +384,6 @@ CREATE TABLE `tb_ship` (
   `status_ship` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `tb_ship`
---
-
-INSERT INTO `tb_ship` (`id_ship`, `code_ship`, `id_bill`, `id_order`, `status_ship`) VALUES
-(22, '5133013', 36, 139, '2'),
-(23, '6404153', 37, 142, '2'),
-(24, '1228946', 38, 143, '1'),
-(25, '3750030', 39, 148, '0'),
-(26, '3750030', 40, 149, '0');
-
 -- --------------------------------------------------------
 
 --
@@ -426,7 +392,7 @@ INSERT INTO `tb_ship` (`id_ship`, `code_ship`, `id_bill`, `id_order`, `status_sh
 
 CREATE TABLE `tb_user` (
   `id_user` int(11) NOT NULL,
-  `account_user` char(20) NOT NULL,
+  `account_user` char(100) NOT NULL,
   `pass_user` text NOT NULL,
   `name_user` varchar(100) NOT NULL,
   `birthday_user` date NOT NULL,
@@ -445,8 +411,7 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `account_user`, `pass_user`, `name_user`, `birthday_user`, `cmnd_user`, `address_user`, `phonenumber_user`, `email_user`, `type_user`, `status_user`) VALUES
 (7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Nông Văn Chiến', '1997-10-18', '362489844', '188/48B Nguyễn Văn Cừ', '01262898272', 'chien@gmail.com', '0', 1),
 (10, 'nhanvien', '2a2fa4fe2fa737f129ef2d127b861b7e', 'Phạm Huyền My', '2003-12-10', '123456789', 'Nguyễn Văn Cừ', '01262898272', 'huyenmy@gmail.com', '1', 1),
-(13, 'khachhang', 'b9bc4dd06b7d2d49cb9fb3d8d9fba6c1', 'Nông Văn Chiến', '2003-04-04', '008203002738', 'Tuyen Quang', '0867476810', 'chienkh6b.vn@gmail.com', '2', 1),
-(14, 'chien', '90a8db953336c8dabbcf48b1592a8c06', 'Nguyễn An', '2001-12-31', '008203002731', 'Khuôn Hà', '0867476810', 'nongvanchien203@hotmail.com', '2', 1);
+(42, 'chienkh6b.vn@gmail.com', '90a8db953336c8dabbcf48b1592a8c06', 'Nông Văn Chiến', '2003-08-04', '', 'Tuyen Quang', '086747', 'chienkh6b.vn@gmail.com', '2', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -541,7 +506,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT cho bảng `tb_bill`
 --
 ALTER TABLE `tb_bill`
-  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_category`
@@ -565,7 +530,7 @@ ALTER TABLE `tb_contact`
 -- AUTO_INCREMENT cho bảng `tb_customer`
 --
 ALTER TABLE `tb_customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_district`
@@ -589,7 +554,7 @@ ALTER TABLE `tb_label`
 -- AUTO_INCREMENT cho bảng `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_product`
@@ -601,13 +566,13 @@ ALTER TABLE `tb_product`
 -- AUTO_INCREMENT cho bảng `tb_ship`
 --
 ALTER TABLE `tb_ship`
-  MODIFY `id_ship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_ship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -623,7 +588,7 @@ ALTER TABLE `tb_bill`
 -- Các ràng buộc cho bảng `tb_customer`
 --
 ALTER TABLE `tb_customer`
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `tb_district`
