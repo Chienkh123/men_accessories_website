@@ -165,19 +165,20 @@ if (isset($_POST['login'])) {
         </div>
 
         <!-- Form đăng nhập -->
-        <div class="login">
-            <div class="center">
-                <h2 class="form-title" id="login"><span>or</span>Đăng nhập</h2>
-                <form action="dang-nhap.php" method="POST">
-                    <div class="form-holder">
-                        <input type="email" class="input" placeholder="Email" name="username" required />
-                        <input type="password" class="input" placeholder="Mật khẩu" name="password" required />
-                    </div>
-
-                    <button type="submit" class="submit-btn" name="login">Đăng nhập</button>
-                </form>
+<div class="login">
+    <div class="center">
+        <h2 class="form-title" id="login"><span>or</span> Đăng nhập</h2>
+        <form action="dang-nhap.php" method="POST">
+            <div class="form-holder">
+                <input type="email" class="input" placeholder="Email" name="username" required />
+                <input type="password" class="input" placeholder="Mật khẩu" name="password" required />
             </div>
-        </div>
+            <button type="submit" class="submit-btn" name="login">Đăng nhập</button>
+        </form>
+        <a href="quen-mat-khau.php" class="forgot-password">Quên mật khẩu?</a>
+    </div>
+</div>
+
     </div>
 
     <script>
@@ -242,10 +243,7 @@ if (isset($_POST['login'])) {
                 e.preventDefault();
                 alert('Email không hợp lệ. Vui lòng nhập đúng định dạng email.');
             }
-            if (!passwordRegex.test(password)) {
-                e.preventDefault();
-                alert('Mật khẩu phải từ 3-15 ký tự và chỉ chứa chữ hoặc số.');
-            }
+            
         });
     </script>
 </body>

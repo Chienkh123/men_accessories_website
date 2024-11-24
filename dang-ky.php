@@ -80,8 +80,6 @@ if (isset($_POST['signup'])) {
         }
     }
 }
-
-
 // Xử lý đăng nhập
 if (isset($_POST['login'])) {
     $error = [];
@@ -130,11 +128,7 @@ if (isset($_POST['login'])) {
         }
     }
 }
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -179,10 +173,8 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </div>
-
     <script>
         console.clear();
-
         const loginBtn = document.getElementById('login');
         const signupBtn = document.getElementById('signup');
 
@@ -241,10 +233,6 @@ if (isset($_POST['login'])) {
             if (!emailRegex.test(email)) {
                 e.preventDefault();
                 alert('Email không hợp lệ. Vui lòng nhập đúng định dạng email.');
-            }
-            if (!passwordRegex.test(password)) {
-                e.preventDefault();
-                alert('Mật khẩu phải từ 3-15 ký tự và chỉ chứa chữ hoặc số.');
             }
         });
     </script>
