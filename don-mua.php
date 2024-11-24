@@ -68,7 +68,6 @@
                                 <th>Ngày đặt hàng</th>
                                 <th>Tổng</th>
                                 <th>Chi tiết</th>
-                                <!-- <th>Mua lại</th> -->
                             </tr>
                         </thead>
                         <tbody class="tt_product">
@@ -101,10 +100,6 @@
                                                 <p class="sl-product"><?php echo number_format($order['quantity_product'] * $order['saleprice_product']); ?> VND</p>
                                             </td>
                                             <td  style="vertical-align: middle;" ><a  href="order_detail_customer.php?code_order=<?php echo $order['id_order']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                                           
-                                            <!-- <td>
-                                                <a href="product.php?id=<?php echo $order['id_product']; ?>"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                            </td> -->
                                         </tr>
                             <?php
                                     }

@@ -3,53 +3,75 @@ session_start();
 include('inc/myconnect.php');
 include('inc/function.php');
 
+// Nếu đã đăng nhập, chuyển hướng về trang chủ
 if (isset($_SESSION['customer_uid'])) {
-    header('location: index.php');
+    header('Location: index.php');
     exit();
 }
 
+// Xử lý đăng ký
 if (isset($_POST['signup'])) {
-    $error = array();
+    $error = [];
 
-    // Kiểm tra đầu vào
-    if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['birthday']) || empty($_POST['address']) || empty($_POST['phone'])) {
-        $error[] = 'Vui lòng nhập đầy đủ thông tin!';
-    } else {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = md5($_POST['password']); // Mã hóa mật khẩu
-        $birthday = $_POST['birthday'];
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
+    // Lấy và xử lý dữ liệu đầu vào
+    $name = mysqli_real_escape_string($dbc, trim($_POST['name']));
+    $email = mysqli_real_escape_string($dbc, trim($_POST['email']));
+    $password = mysqli_real_escape_string($dbc, trim($_POST['password']));
+    $birthday = mysqli_real_escape_string($dbc, trim($_POST['birthday']));
+    $address = mysqli_real_escape_string($dbc, trim($_POST['address']));
+    $phone = mysqli_real_escape_string($dbc, trim($_POST['phone']));
 
-        // Kiểm tra định dạng email
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error[] = 'Địa chỉ email không hợp lệ!';
-        }
-
-        // Kiểm tra tài khoản đã tồn tại trong cơ sở dữ liệu
-        $query_check_user = "SELECT id_user FROM tb_user WHERE account_user = '{$email}'";
-        $result_check_user = mysqli_query($dbc, $query_check_user);
-        kt_query($query_check_user, $result_check_user); // Kiểm tra kết quả truy vấn
-
-        if (mysqli_num_rows($result_check_user) > 0) {
-            $error[] = 'Tài khoản đã tồn tại!';
-        }
+    // Kiểm tra dữ liệu đầu vào
+    if (empty($name) || empty($email) || empty($password) || empty($birthday) || empty($address) || empty($phone)) {
+        $error[] = 'Vui lòng điền đầy đủ thông tin!';
     }
 
-    // Nếu không có lỗi thì thực hiện đăng ký
-    if (empty($error)) {
-        $query_register = "INSERT INTO tb_user (account_user, pass_user, name_user, email_user, birthday_user, address_user, phonenumber_user, type_user, status_user) 
-                           VALUES ('{$email}', '{$password}', '{$name}', '{$email}', '{$birthday}', '{$address}', '{$phone}', 2, 1)";
-        $result_register = mysqli_query($dbc, $query_register);
-        kt_query($query_register, $result_register); // Kiểm tra kết quả
+    // Kiểm tra email hợp lệ
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error[] = 'Email không hợp lệ!';
+    }
 
-        if ($result_register) {
-            echo '<script>alert("Đăng ký thành công!");</script>';
-            header('Location: dang-nhap.php'); // Chuyển hướng đến trang đăng nhập
-            exit();
+    // Kiểm tra độ dài mật khẩu
+    if (strlen($password) < 3 || strlen($password) > 15) {
+        $error[] = 'Mật khẩu phải từ 3-15 ký tự!';
+    }
+
+    // Kiểm tra email đã tồn tại
+    $check_query = "SELECT email_user FROM tb_user WHERE email_user = '{$email}'";
+    $check_result = mysqli_query($dbc, $check_query);
+    kt_query($check_query, $check_result);
+
+    if (mysqli_num_rows($check_result) > 0) {
+        $error[] = 'Email đã được sử dụng. Vui lòng sử dụng email khác!';
+    }
+
+    // Nếu không có lỗi, thực hiện đăng ký
+    if (empty($error)) {
+        $hashed_password = md5($password); // Mã hóa mật khẩu bằng MD5
+
+        // Thêm vào bảng tb_user
+        $query_user = "INSERT INTO tb_user (account_user, name_user, email_user, pass_user, birthday_user, address_user, phonenumber_user, status_user, type_user)
+                       VALUES ('{$email}', '{$name}', '{$email}', '{$hashed_password}', '{$birthday}', '{$address}', '{$phone}', 1, 2)";
+        $result_user = mysqli_query($dbc, $query_user);
+        kt_query($query_user, $result_user);
+
+        // Lấy ID của người dùng vừa thêm
+        if ($result_user && mysqli_affected_rows($dbc) == 1) {
+            $id_user = mysqli_insert_id($dbc); // Lấy ID của bản ghi vừa được thêm
+
+            // Thêm vào bảng tb_customer
+            $query_customer = "INSERT INTO tb_customer (name_customer, phonenumber_customer, email_customer, address_customer, id_user)
+                               VALUES ('{$name}', '{$phone}', '{$email}', '{$address}', '{$id_user}')";
+            $result_customer = mysqli_query($dbc, $query_customer);
+            kt_query($query_customer, $result_customer);
+
+            if ($result_customer && mysqli_affected_rows($dbc) == 1) {
+                echo '<script>alert("Đăng ký thành công. Bạn có thể đăng nhập ngay bây giờ!");</script>';
+            } else {
+                echo '<script>alert("Đăng ký tài khoản thành công nhưng lỗi khi thêm thông tin khách hàng. Vui lòng liên hệ hỗ trợ!");</script>';
+            }
         } else {
-            echo '<script>alert("Có lỗi xảy ra. Vui lòng thử lại!");</script>';
+            echo '<script>alert("Đã xảy ra lỗi trong quá trình đăng ký. Vui lòng thử lại sau!");</script>';
         }
     } else {
         // Hiển thị lỗi
@@ -58,54 +80,61 @@ if (isset($_POST['signup'])) {
         }
     }
 }
+
 
 // Xử lý đăng nhập
 if (isset($_POST['login'])) {
-    $error = array();
+    $error = [];
 
-    // Kiểm tra đầu vào
+    // Kiểm tra xem email và mật khẩu có trống không
     if (empty($_POST['username']) || empty($_POST['password'])) {
-        $error[] = 'Vui lòng nhập đầy đủ thông tin!';
+        $error[] = 'Vui lòng nhập email và mật khẩu!';
     } else {
-        $pattern = "/^[A-Za-z0-9]{3,15}$/"; // Kiểm tra tài khoản/mật khẩu hợp lệ
+        $username = mysqli_real_escape_string($dbc, trim($_POST['username']));
+        $password = mysqli_real_escape_string($dbc, trim($_POST['password']));
 
-        if (!preg_match($pattern, $_POST['username']) || !preg_match($pattern, $_POST['password'])) {
-            $error[] = 'Tài khoản và mật khẩu phải từ 3-15 ký tự và chỉ chứa chữ hoặc số!';
+        // Lấy thông tin tài khoản từ cơ sở dữ liệu
+        $query = "SELECT id_user, account_user, pass_user, type_user
+                  FROM tb_user
+                  WHERE account_user = '{$username}' AND status_user = 1 AND type_user = 2";
+        $result = mysqli_query($dbc, $query);
+        kt_query($query, $result);
+
+        // Kiểm tra xem tài khoản có tồn tại trong cơ sở dữ liệu không
+        if (mysqli_num_rows($result) == 1) {
+            list($id_user, $account_user, $hashed_password, $type_user) = mysqli_fetch_array($result, MYSQLI_NUM);
+
+            // Kiểm tra mật khẩu đúng hay không (so sánh với MD5)
+            if (md5($password) == $hashed_password) {
+                // Khởi tạo session nếu mật khẩu đúng
+                session_start();
+                $_SESSION['customer_uid'] = $id_user;
+                $_SESSION['customer_username'] = $account_user;
+                $_SESSION['customer_type'] = $type_user;
+
+                // Chuyển hướng đến trang chính
+                header('Location: index.php');
+                exit();
+            } else {
+                $error[] = 'Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại!';
+            }
         } else {
-            $username = $_POST['username'];
-            $password = md5($_POST['password']); // Mã hóa mật khẩu
+            $error[] = 'Tài khoản không tồn tại hoặc đã bị khóa!';
         }
     }
 
-    // Xử lý nếu không có lỗi
-    if (empty($error)) {
-        $query = "SELECT id_user, account_user, pass_user, type_user
-                  FROM tb_user
-                  WHERE account_user = '{$username}' AND pass_user = '{$password}' AND status_user = 1 AND type_user = 2";
-        $result = mysqli_query($dbc, $query);
-        kt_query($query, $result); // Hàm kiểm tra kết quả
-
-        if (mysqli_num_rows($result) == 1) {
-            list($id_user, $account_user, $pass_user, $type_user) = mysqli_fetch_array($result, MYSQLI_NUM);
-
-            // Gán session cho customer
-            $_SESSION['customer_uid'] = $id_user;
-            $_SESSION['customer_username'] = $account_user;
-            $_SESSION['customer_type'] = $type_user;
-
-            header('Location: index.php'); // Chuyển hướng đến trang chính
-            exit();
-        } else {
-            echo '<script>alert("Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại!");</script>';
-        }
-    } else {
-        // Hiển thị lỗi
+    // Hiển thị các lỗi nếu có
+    if (!empty($error)) {
         foreach ($error as $err) {
             echo '<script>alert("' . $err . '");</script>';
         }
     }
 }
+
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -122,7 +151,7 @@ if (isset($_POST['login'])) {
         <!-- Form đăng ký -->
         <div class="signup">
             <h2 class="form-title" id="signup"><span>or</span>Đăng ký</h2>
-            <form action="dang-nhap.php" method="POST">
+            <form action="dang-ky.php" method="POST">
                 <div class="form-holder">
                     <input type="text" class="input" placeholder="Họ và Tên" name="name" required />
                     <input type="email" class="input" placeholder="Email" name="email" required />
@@ -139,9 +168,9 @@ if (isset($_POST['login'])) {
         <div class="login slide-up">
             <div class="center">
                 <h2 class="form-title" id="login"><span>or</span>Đăng nhập</h2>
-                <form action="dang-nhap.php" method="POST">
+                <form action="dang-ky.php" method="POST">
                     <div class="form-holder">
-                        <input type="text" class="input" placeholder="Email" name="username" required />
+                        <input type="email" class="input" placeholder="Email" name="username" required />
                         <input type="password" class="input" placeholder="Mật khẩu" name="password" required />
                     </div>
 
@@ -179,6 +208,44 @@ if (isset($_POST['login'])) {
                     parent.classList.remove('slide-up')
                 }
             });
+        });
+
+        // Kiểm tra điều kiện đăng ký
+        const signupForm = document.querySelector('.signup form');
+        signupForm.addEventListener('submit', (e) => {
+            const email = signupForm.querySelector('input[name="email"]').value;
+            const password = signupForm.querySelector('input[name="password"]').value;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const passwordRegex = /^[a-zA-Z0-9]{3,15}$/;
+
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('Email không hợp lệ. Vui lòng nhập đúng định dạng email.');
+            }
+            if (!passwordRegex.test(password)) {
+                e.preventDefault();
+                alert('Mật khẩu phải từ 3-15 ký tự và chỉ chứa chữ hoặc số.');
+            }
+        });
+
+        // Kiểm tra điều kiện đăng nhập
+        const loginForm = document.querySelector('.login form');
+        loginForm.addEventListener('submit', (e) => {
+            const email = loginForm.querySelector('input[name="username"]').value;
+            const password = loginForm.querySelector('input[name="password"]').value;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const passwordRegex = /^[a-zA-Z0-9]{3,15}$/;
+
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('Email không hợp lệ. Vui lòng nhập đúng định dạng email.');
+            }
+            if (!passwordRegex.test(password)) {
+                e.preventDefault();
+                alert('Mật khẩu phải từ 3-15 ký tự và chỉ chứa chữ hoặc số.');
+            }
         });
     </script>
 </body>
