@@ -224,10 +224,6 @@ if (isset($_POST['login'])) {
                 e.preventDefault();
                 alert('Email không hợp lệ. Vui lòng nhập đúng định dạng email.');
             }
-            if (!passwordRegex.test(password)) {
-                e.preventDefault();
-                alert('Mật khẩu phải từ 3-15 ký tự và chỉ chứa chữ hoặc số.');
-            }
         });
 
         // Kiểm tra điều kiện đăng nhập
