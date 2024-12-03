@@ -354,8 +354,8 @@
                                 <a href="don-mua.php">🛒 Đơn mua</a>
                                 <a href="dang-xuat.php">🚪 Đăng xuất</a>
                             <?php else: ?>
-                                <a href="dang-nhap.php">🔑 Đăng nhập</a>
-                                <a href="dang-ky.php">✍️ Đăng ký</a>
+                                <a href="login-user.php">🔑 Đăng nhập</a>
+                                <a href="signup-user.php">✍️ Đăng ký</a>
                             <?php endif; ?>
                         </div>
                     </span>

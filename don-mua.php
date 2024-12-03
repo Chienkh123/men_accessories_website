@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    include('inc/myconnect.php');
+    include('inc/function.php');
+    include('include/header.php');
+    if (isset($_SESSION["customer_uid"])) {
+        header("location: index.php");
+    }
+    ?>
 <!DOCTYPE html>
 <html>
 
@@ -28,13 +37,6 @@
 </head>
 
 <body style="margin-top: -20px">
-    <?php
-    session_start();
-    include('inc/myconnect.php');
-    include('inc/function.php');
-    include('include/header.php');
-    ?>
-
     <div class="bcrumbs">
         <div class="container">
             <div class="row">
@@ -81,25 +83,27 @@
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($order = mysqli_fetch_assoc($result)) {
                             ?>
-                                        <tr  class="sp<?php echo $order['id_product']; ?>">
+                                        <tr class="sp<?php echo $order['id_product']; ?>">
                                             <td style="vertical-align: middle;"><?php echo $stt++; ?></td>
                                             <td style="vertical-align: middle;"><?php echo $order['code_order']; ?></td>
                                             <?php $image = $order['image_thump']; ?>
-                                            <td style="vertical-align: middle;"  class="img-thumbnail"><img src="./<?php echo explode(" ", $image)[0]; ?>" width=50></td>
-                                            <td  style="vertical-align: middle;">
+                                            <td style="vertical-align: middle;" class="img-thumbnail"><img src="./<?php echo explode(" ", $image)[0]; ?>" width=50></td>
+                                            <td style="vertical-align: middle;">
                                                 <p class="name-product"><a href="product.php?id=<?php echo $order['id_product']; ?>"><?php echo $order['name_product']; ?></a></p>
-										    </td>
-                                            <td  style="vertical-align: middle;">
+                                            </td>
+                                            <td style="vertical-align: middle;">
                                                 <p class="sl-product"><?php echo $order['quantity_product']; ?></p>
                                             </td>
-                                            <td  style="vertical-align: middle;">
+                                            <td style="vertical-align: middle;">
                                                 <p class="sl-product"><?php echo number_format($order['saleprice_product']); ?> VND</p>
                                             </td>
-                                            <td  style="vertical-align: middle;"><p class="sl-product"><?php echo $order['order_day']; ?></p></td>
-                                            <td  style="vertical-align: middle;">
+                                            <td style="vertical-align: middle;">
+                                                <p class="sl-product"><?php echo $order['order_day']; ?></p>
+                                            </td>
+                                            <td style="vertical-align: middle;">
                                                 <p class="sl-product"><?php echo number_format($order['quantity_product'] * $order['saleprice_product']); ?> VND</p>
                                             </td>
-                                            <td  style="vertical-align: middle;" ><a  href="order_detail_customer.php?code_order=<?php echo $order['id_order']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                            <td style="vertical-align: middle;"><a href="order_detail_customer.php?code_order=<?php echo $order['id_order']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                                         </tr>
                             <?php
                                     }
