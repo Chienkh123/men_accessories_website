@@ -24,7 +24,7 @@ function sendEmail($recipient, $subject, $body)
         $mail->Port = 587;
 
         // Email settings
-        $mail->setFrom('MS_551fV1@trial-jy7zpl9yee5g5vx6.mlsender.net', 'chien'); // Email người gửi
+        $mail->setFrom('MS_551fV1@trial-jy7zpl9yee5g5vx6.mlsender.net', 'HomeShop'); // Email người gửi
         $mail->addAddress($recipient); // Email người nhận
         $mail->isHTML(true);
         $mail->Subject = $subject;
@@ -56,6 +56,24 @@ if (isset($_POST['signup'])) {
     if (mysqli_num_rows($res) > 0) {
         $errors['email'] = "Email that you have entered already exists!";
     }
+    // kiểm tra ngày sinh đủ 18 chưa
+    $age = date_diff(date_create($birthday), date_create('now'))->y;
+    if ($age < 18) {
+        $errors['birthday'] = "You must be at least 18 years old to register.";
+    }
+     // Kiểm tra mật khẩu
+    $passwordRegex = '/^[a-zA-Z0-9]{3,15}$/';
+    if (!preg_match($passwordRegex, $password)) {
+        $errors['password'] = "Password must be between 3 and 15 characters.";
+    }
+
+     // Kiểm tra ngày sinh
+    $currentDate = new DateTime();
+    $inputDate = new DateTime($birthday);
+    if ($inputDate > $currentDate) {
+        $errors['birthday'] = "Birthday cannot be in the future.";
+    }
+
 
     if (count($errors) === 0) {
         $hashed_password = md5($password);
