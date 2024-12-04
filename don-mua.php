@@ -1,15 +1,11 @@
 <?php
-    session_start();
-    include('inc/myconnect.php');
-    include('inc/function.php');
-    include('include/header.php');
-    if (isset($_SESSION["customer_uid"])) {
-        header("location: index.php");
-    }
-    ?>
+session_start();
+include('inc/myconnect.php');
+include('inc/function.php');
+include('include/header.php');
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Lịch sử mua hàng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

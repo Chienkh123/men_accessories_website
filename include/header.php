@@ -9,6 +9,7 @@
     <!--    <link rel="stylesheet" type="text/css" href="css/style.css">-->
     <link rel="stylesheet" type="text/css" href="css/slider.css">
     <link rel="stylesheet" type="text/css" href="css/style-body1.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
     <style>
         .user-dropdown {
             position: relative;
@@ -118,7 +119,6 @@
                                         echo  '<a>' . $array_email[0] . '</a>';
                                     }
                                     ?>
-
                                 </li>
                             </ul>
                         </div>

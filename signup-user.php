@@ -6,10 +6,15 @@
     <meta charset="UTF-8">
     <title>Signup Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loader.css">
 </head>
 
 <body>
+     <!-- Loader -->
+     <div id="global-loader">
+        <img src="https://i.pinimg.com/originals/2c/bb/5e/2cbb5e95b97aa2b496f6eaec84b9240d.gif" class="loader-img" alt="Loader">
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 form">
@@ -57,10 +62,10 @@
                         <input type="date" class="form-control" name="birthday" id="birthday" placeholder="Birthday" required />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="address" placeholder="Địa chỉ" required value="<?php echo $address ?>"/>
+                        <input type="text" class="form-control" name="address" placeholder="Địa chỉ" required />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Số điện thoại" name="phone" required value="<?php echo $phone ?>"/>
+                        <input type="text" class="form-control" placeholder="Số điện thoại" name="phone" required />
                     </div>
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="signup" value="Signup">
@@ -70,6 +75,9 @@
             </div>
         </div>
     </div>
+    <!-- Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/loader.js"></script>
 </body>
 
 </html>

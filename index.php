@@ -8,7 +8,10 @@ include('inc/function.php');
     session_start();
     include('include/header.php');
     ?>
-    
+     <!-- Loader -->
+     <div id="global-loader">
+        <img src="https://i.pinimg.com/originals/2c/bb/5e/2cbb5e95b97aa2b496f6eaec84b9240d.gif" class="loader-img" alt="Loader">
+    </div>
     <div class="banner hidden-sm hidden-xs ">
         <div class="container-fluid">
             <div class="row">
@@ -248,8 +251,10 @@ include('include/footer.php');
 <script type="text/javascript" src="js/slider.js"></script>
 <script type="text/javascript" src="js/jquery-main.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
+<script type="text/javascript" src="js/loader.js"></script>
 
 <script type="text/javascript">
+
 
 
     $(document).ready(function () {
