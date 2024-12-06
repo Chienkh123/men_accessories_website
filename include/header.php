@@ -238,7 +238,7 @@
                     </ul>
                 </div>
                 <div class="col-xs-7 col-sm-2 pull-right icon-header ">
-                <span class="search hidden-xs"><i class="glyphicon glyphicon-search"></i>
+                    <span class="search hidden-xs"><i class="glyphicon glyphicon-search"></i>
                         <div class="search-icon-header">
                             <form action="tim-kiem.php" method="get">
                                 <input class="form-control" type="text" name="search_header" placeholder="Tìm kiếm">
@@ -308,7 +308,6 @@
                                                     }
                                                     echo $quantity;
                                                     ?>
-
                                                     <span> x </span></span><span
                                                     class="gia"><?php echo $value['saleprice_product'] ?></span>
                                             </div>
@@ -316,17 +315,12 @@
                                         </div>
                                         <hr>
                                     </div>
-
                             <?php
-
                                 }
                             }
                             ?>
-
-
                         </div>
                     </span>
-                   
                     <?php
                     $isLoggedIn = isset($_SESSION['customer_uid']) ? true : false;
                     ?>
@@ -556,6 +550,5 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
