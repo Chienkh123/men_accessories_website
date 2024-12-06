@@ -6,6 +6,7 @@ include('include/header.php');
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Lịch sử mua hàng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,11 +122,8 @@ include('include/header.php');
             </div>
         </div>
     </div>
-
     <?php include('include/footer.php'); ?>
-
     <script src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-main.js"></script>
 </body>
-
 </html>

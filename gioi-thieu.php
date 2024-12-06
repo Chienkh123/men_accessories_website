@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -59,9 +60,7 @@
                     extract(mysqli_fetch_array($result));
                     echo $value;
                 } else {
-
                 ?>
-
                     <div class="content-gt">Chưa có.</div>
                 <?php
                 }
@@ -69,15 +68,14 @@
             </div>
         </div>
     </div>
-
-
     <?php
     include('include/footer.php');
     ?>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-main.js"></script>
+    <script type="text/javascript">
+    </script>
 </body>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-main.js"></script>
-<script type="text/javascript">
-</script>
+
 
 </html>

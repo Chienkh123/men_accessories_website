@@ -61,13 +61,13 @@ if (isset($_POST['signup'])) {
     if ($age < 18) {
         $errors['birthday'] = "You must be at least 18 years old to register.";
     }
-     // Kiểm tra mật khẩu
+    // Kiểm tra mật khẩu
     $passwordRegex = '/^[a-zA-Z0-9]{3,15}$/';
     if (!preg_match($passwordRegex, $password)) {
         $errors['password'] = "Password must be between 3 and 15 characters.";
     }
 
-     // Kiểm tra ngày sinh
+    // Kiểm tra ngày sinh
     $currentDate = new DateTime();
     $inputDate = new DateTime($birthday);
     if ($inputDate > $currentDate) {
@@ -84,7 +84,7 @@ if (isset($_POST['signup'])) {
 
         $data_check = mysqli_query($dbc, $insert_data);
         if ($data_check) {
-            $id_user = mysqli_insert_id($dbc); 
+            $id_user = mysqli_insert_id($dbc);
             $query_customer = "INSERT INTO tb_customer (name_customer, phonenumber_customer, email_customer, address_customer, id_user)
                                VALUES ('{$name}', '{$phone}', '{$email}', '{$address}', '{$id_user}')";
 
@@ -234,7 +234,7 @@ if (isset($_POST['change-password'])) {
         $errors['password'] = "Confirm password not matched!";
     } else {
         $code = 0;
-        $email = $_SESSION['email']; 
+        $email = $_SESSION['email'];
         $encpass = md5($password);
         $update_pass = "UPDATE tb_user SET code = $code, pass_user = '$encpass' WHERE email_user = '$email'";
         $run_query = mysqli_query($dbc, $update_pass);

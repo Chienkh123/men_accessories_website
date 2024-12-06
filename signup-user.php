@@ -11,8 +11,8 @@
 </head>
 
 <body>
-     <!-- Loader -->
-     <div id="global-loader">
+    <!-- Loader -->
+    <div id="global-loader">
         <img src="https://i.pinimg.com/originals/2c/bb/5e/2cbb5e95b97aa2b496f6eaec84b9240d.gif" class="loader-img" alt="Loader">
     </div>
     <div class="container">

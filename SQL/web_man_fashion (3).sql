@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 24, 2024 lúc 06:34 PM
+-- Thời gian đã tạo: Th12 06, 2024 lúc 05:27 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -157,7 +157,8 @@ CREATE TABLE `tb_customer` (
 --
 
 INSERT INTO `tb_customer` (`id_customer`, `name_customer`, `phonenumber_customer`, `email_customer`, `address_customer`, `type_customer`, `id_user`) VALUES
-(11, 'Nông Văn Chiến', 86747, 'chienkh6b.vn@gmail.com', 'Tuyen Quang', 1, 42);
+(12, 'Nông Văn Chiến', 867476810, 'chienkh6b.vn@gmail.com', 'Tuyen Quang', 1, 43),
+(17, 'Nông Văn Chiến', 867476810, '20211891@eaut.edu.vn', 'Tuyên Quang', 1, 56);
 
 -- --------------------------------------------------------
 
@@ -334,7 +335,7 @@ CREATE TABLE `tb_product` (
 --
 
 INSERT INTO `tb_product` (`id_product`, `code_product`, `name_product`, `id_category`, `id_label`, `image`, `image_thump`, `price_product`, `saleprice_product`, `describe_product`, `size_product`, `view_product`, `date_product`, `status_product`) VALUES
-(19, 'A8024', 'ÁO SƠ MI HÀN QUỐC CAM TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Cam Trơn với thiết kế cổ trụ, tay dài, form ôm nhẹ, phối nút ở cổ áo tinh tế. Thiết kế đơn giản theo phong cách Hàn Quốc rất thời trang, vải trơn thanh lịch, chất liệu 100% cotton cao cấp thấm hút tốt, pha sợi spandex giúp co giãn và không co rút, nhăn nhàu khi sử dụng. Đường chỉ may tỉ mỉ, tinh tế đến từng chi tiết nhỏ. Màu sắc nổi bật, kiểu dáng hiện đại, giúp bạn tự tin và lịch lãm hơn.', 'a:6:{s:1:\"s\";i:7;s:1:\"m\";i:9;s:1:\"l\";i:6;s:2:\"xl\";s:2:\"10\";i:28;i:-1;i:27;i:-1;}', 69, '2018-01-10', '1'),
+(19, 'A8024', 'ÁO SƠ MI HÀN QUỐC CAM TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-cam-tron-asm788-7258-slide-4_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Cam Trơn với thiết kế cổ trụ, tay dài, form ôm nhẹ, phối nút ở cổ áo tinh tế. Thiết kế đơn giản theo phong cách Hàn Quốc rất thời trang, vải trơn thanh lịch, chất liệu 100% cotton cao cấp thấm hút tốt, pha sợi spandex giúp co giãn và không co rút, nhăn nhàu khi sử dụng. Đường chỉ may tỉ mỉ, tinh tế đến từng chi tiết nhỏ. Màu sắc nổi bật, kiểu dáng hiện đại, giúp bạn tự tin và lịch lãm hơn.', 'a:6:{s:1:\"s\";i:7;s:1:\"m\";i:9;s:1:\"l\";i:6;s:2:\"xl\";s:2:\"10\";i:28;i:-1;i:27;i:-1;}', 72, '2018-01-10', '1'),
 (20, 'A551', 'ÁO SƠ MI HÀN QUỐC TRẮNG KEM TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-4_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-3_thump.jpg upload/resize/ao-so-mi-han-quoc-trang-kem-tron-asm788-7251-slide-4_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Trắng Kem Trơn màu sắc trang nhã, thiết kế hiện đại không gây cảm giác nhàm chán. Form ôm, vải suông, tay dài, cổ trụ phối nút tạo điểm nhấn tinh tế cho sản phẩm. Chất liệu cao cấp từ 100% cotton thấm hút tốt, pha sợi spandex giúp sản phẩm có độ co giãn, không nhăn nhàu co rút sau khi giặt. Thiết kế theo phong cách Hàn Quốc rất thời trang và hiện đại, giúp bạn thêm chuyên nghiệp, lịch lãm và nam tính hơn.', 'a:4:{s:1:\"s\";i:9;s:1:\"m\";s:2:\"10\";s:1:\"l\";i:0;s:2:\"xl\";s:2:\"10\";}', 17, '2018-01-10', '1'),
 (21, 'A3516', 'ÁO SƠ MI HÀN QUỐC XANH ĐEN TRƠN', 106, 22, 'upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-3_thump.jpg', 'upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-1_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-2_thump.jpg upload/resize/ao-so-mi-han-quoc-xanh-den-tron-asm788-7255-slide-3_thump.jpg', 200000, 245000, 'Áo Sơ Mi Hàn Quốc Xanh Đen Trơn  với thiết kế cổ trụ, tay dài, form ôm nhẹ, phối nút ở cổ áo tinh tế. Thiết kế đơn giản theo phong cách Hàn Quốc rất thời trang, vải trơn thanh lịch, chất liệu 100% cotton cao cấp thấm hút tốt. Đường chỉ may tỉ mỉ, tinh tế đến từng chi tiết nhỏ. Màu sắc nổi bật, kiểu dáng hiện đại, giúp bạn tự tin và lịch lãm hơn.', 'a:4:{s:1:\"s\";s:2:\"10\";s:1:\"m\";i:4;s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";}', 3, '2018-01-10', '1'),
 (23, 'A441', 'ÁO SƠ MI TRẮNG KEM', 106, 22, 'upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-4_thump.jpg', 'upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-1_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-2_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-3_thump.jpg upload/resize/ao-so-mi-trang-kem-asm836-8193-slide-4_thump.jpg ', 200000, 245000, 'Màu trắng kem luôn mang đến cho người mặc sự thanh lịch, nhã nhặn như chiếc Áo Sơ Mi Trắng Kem này. Áo co giãn rất thoải mái và thấm hút mồ hôi cực tốt nhờ chất liệu từ cotton cao cấp. Điểm nhấn của chiếc áo nằm ở những đường lượn cong nhiều màu trải đều khắp mặt áo rất ấn tượng. Đảm bảo sẽ làm bật lên style ăn mặc hiện đại của bạn.', 'a:5:{s:1:\"m\";i:9;s:1:\"l\";s:2:\"10\";s:2:\"xl\";s:2:\"10\";i:27;i:-2;i:29;i:-1;}', 15, '2018-01-11', '1'),
@@ -401,17 +402,20 @@ CREATE TABLE `tb_user` (
   `phonenumber_user` char(11) NOT NULL,
   `email_user` char(100) NOT NULL,
   `type_user` char(2) NOT NULL,
-  `status_user` int(11) NOT NULL
+  `status_user` int(11) NOT NULL,
+  `code` mediumint(50) NOT NULL,
+  `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Đang đổ dữ liệu cho bảng `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `account_user`, `pass_user`, `name_user`, `birthday_user`, `cmnd_user`, `address_user`, `phonenumber_user`, `email_user`, `type_user`, `status_user`) VALUES
-(7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Nông Văn Chiến', '1997-10-18', '362489844', '188/48B Nguyễn Văn Cừ', '01262898272', 'chien@gmail.com', '0', 1),
-(10, 'nhanvien', '2a2fa4fe2fa737f129ef2d127b861b7e', 'Phạm Huyền My', '2003-12-10', '123456789', 'Nguyễn Văn Cừ', '01262898272', 'huyenmy@gmail.com', '1', 1),
-(42, 'chienkh6b.vn@gmail.com', '90a8db953336c8dabbcf48b1592a8c06', 'Nông Văn Chiến', '2003-08-04', '', 'Tuyen Quang', '086747', 'chienkh6b.vn@gmail.com', '2', 1);
+INSERT INTO `tb_user` (`id_user`, `account_user`, `pass_user`, `name_user`, `birthday_user`, `cmnd_user`, `address_user`, `phonenumber_user`, `email_user`, `type_user`, `status_user`, `code`, `status`) VALUES
+(7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Nông Văn Chiến', '1997-10-18', '362489844', '188/48B Nguyễn Văn Cừ', '01262898272', 'chien@gmail.com', '0', 1, 0, 'verified'),
+(10, 'nhanvien', '2a2fa4fe2fa737f129ef2d127b861b7e', 'Phạm Huyền My', '2003-12-10', '123456789', 'Nguyễn Văn Cừ', '01262898272', 'huyenmy@gmail.com', '1', 1, 0, 'verified'),
+(43, 'chienkh6b.vn@gmail.com', '70393d54c6f1edb7edb0ffaf0b6694bd', 'Nông Văn Chiến', '2003-08-01', '', 'Tuyen Quang', '0867476810', 'chienkh6b.vn@gmail.com', '2', 1, 142347, 'verified'),
+(56, '20211891@eaut.edu.vn', '3c37b8686f44f400225246f813908933', 'Nông Văn Chiến', '2004-08-04', '', 'Tuyên Quang', '0867476810', '20211891@eaut.edu.vn', '2', 1, 699510, 'notverified');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -506,7 +510,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT cho bảng `tb_bill`
 --
 ALTER TABLE `tb_bill`
-  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_category`
@@ -530,7 +534,7 @@ ALTER TABLE `tb_contact`
 -- AUTO_INCREMENT cho bảng `tb_customer`
 --
 ALTER TABLE `tb_customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_district`
@@ -554,7 +558,7 @@ ALTER TABLE `tb_label`
 -- AUTO_INCREMENT cho bảng `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_product`
@@ -566,13 +570,13 @@ ALTER TABLE `tb_product`
 -- AUTO_INCREMENT cho bảng `tb_ship`
 --
 ALTER TABLE `tb_ship`
-  MODIFY `id_ship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_ship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
