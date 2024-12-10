@@ -58,6 +58,7 @@ This is an admin management system for an online men's fashion store. The system
 5. Access admin panel at `/admin`
 
 ### Directory Structure
+```
 admin/
 ├── css/          # Admin styles
 ├── js/           # JavaScript files
@@ -66,6 +67,7 @@ admin/
 ├── ckeditor/     # Text editor
 ├── ckfinder/     # File manager
 └── .php          # Admin pages
+```
 
 ## Usage
 1. Login to admin panel using admin credentials
